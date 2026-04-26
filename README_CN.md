@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/hero.gif" alt="recall">
+  <img src="assets/hero.png" alt="recall">
 </p>
 
 # recall
