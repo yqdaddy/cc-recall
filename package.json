@@ -1,0 +1,37 @@
+{
+  "name": "cc-recall",
+  "version": "0.5.0",
+  "author": "yqdaddy",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yqdaddy/cc-recall.git"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^6.0.3"
+  },
+  "bin": {
+    "recall": "./dist/index.js"
+  },
+  "description": "CLI tool to search Claude Code bash history and conversation content",
+  "files": [
+    "dist/index.js"
+  ],
+  "keywords": [
+    "claude",
+    "claude-code",
+    "bash",
+    "history",
+    "cli",
+    "search",
+    "recall"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "dev": "bun run src/index.ts",
+    "build": "bun build --compile --outfile=recall ./src/index.ts",
+    "test": "bun test",
+    "postinstall": "echo '\n  Run \"recall onboard\" to add recall to ~/.claude/CLAUDE.md\n'"
+  },
+  "type": "module"
+}
