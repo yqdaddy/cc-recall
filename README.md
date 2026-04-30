@@ -83,11 +83,13 @@ bun add -g cc-recall
 **Manual download**: Get binaries from [releases](https://github.com/yqdaddy/cc-recall/releases)
 
 **From source**:
+
 ```bash
 git clone https://github.com/yqdaddy/cc-recall
 cd cc-recall
 bun install && bun run build
 ```
+
 </details>
 
 ## Usage
@@ -160,34 +162,34 @@ recall ingest --candidates --format json
 
 Search command history by substring or regex.
 
-| Flag | Description |
-|------|-------------|
-| `--regex`, `-r` | Treat pattern as regular expression |
-| `--cwd <path>` | Filter by working directory |
-| `--here`, `-H` | Filter by current directory |
-| `--limit`, `-n <N>` | Limit number of results |
-| `--sort <mode>` | Sort by: `frecency` (default), `time` |
-| `--no-sync` | Skip auto-sync before searching |
+| Flag                | Description                           |
+| ------------------- | ------------------------------------- |
+| `--regex`, `-r`     | Treat pattern as regular expression   |
+| `--cwd <path>`      | Filter by working directory           |
+| `--here`, `-H`      | Filter by current directory           |
+| `--limit`, `-n <N>` | Limit number of results               |
+| `--sort <mode>`     | Sort by: `frecency` (default), `time` |
+| `--no-sync`         | Skip auto-sync before searching       |
 
 ### `recall list`
 
 Show recent commands, sorted by frecency by default.
 
-| Flag | Description |
-|------|-------------|
-| `--limit`, `-n <N>` | Number of commands (default: 20) |
-| `--here`, `-H` | Filter by current directory |
-| `--sort <mode>` | Sort by: `frecency` (default), `time` |
-| `--no-sync` | Skip auto-sync before listing |
+| Flag                | Description                           |
+| ------------------- | ------------------------------------- |
+| `--limit`, `-n <N>` | Number of commands (default: 20)      |
+| `--here`, `-H`      | Filter by current directory           |
+| `--sort <mode>`     | Sort by: `frecency` (default), `time` |
+| `--no-sync`         | Skip auto-sync before listing         |
 
 ### `recall chat search <pattern>`
 
 Search conversation content (text, thinking, tool interactions).
 
-| Flag | Description |
-|------|-------------|
+| Flag            | Description                                         |
+| --------------- | --------------------------------------------------- |
 | `--type <type>` | Filter by: `text`, `thinking`, `all` (default: all) |
-| `--cwd <path>` | Filter by working directory |
+| `--cwd <path>`  | Filter by working directory                         |
 
 ### `recall chat session <session_id>`
 
@@ -197,18 +199,18 @@ View a complete session timeline with all messages and commands.
 
 Extract high-value content candidates for knowledge ingestion.
 
-| Flag | Description |
-|------|-------------|
-| `--session <id>` | Filter by session ID |
-| `--min-score <N>` | Minimum value score (default: 50) |
+| Flag                | Description                             |
+| ------------------- | --------------------------------------- |
+| `--session <id>`    | Filter by session ID                    |
+| `--min-score <N>`   | Minimum value score (default: 50)       |
 | `--format <format>` | Output format: `text` (default), `json` |
 
 ### `recall sync`
 
 Index new commands and messages from Claude Code sessions.
 
-| Flag | Description |
-|------|-------------|
+| Flag            | Description                        |
+| --------------- | ---------------------------------- |
 | `--force`, `-f` | Re-index all sessions from scratch |
 
 ## Ranking Algorithm
@@ -252,38 +254,38 @@ All data stored locally in SQLite at `~/.cc-recall/history.db`.
 
 ### Commands Table
 
-| Field | Description |
-|-------|-------------|
-| `command` | The bash command executed |
-| `description` | What Claude said it does |
-| `cwd` | Working directory |
-| `timestamp` | When executed |
-| `is_error` | Whether command failed |
-| `stdout` | Command output |
-| `stderr` | Error output |
-| `session_id` | Source session |
+| Field         | Description               |
+| ------------- | ------------------------- |
+| `command`     | The bash command executed |
+| `description` | What Claude said it does  |
+| `cwd`         | Working directory         |
+| `timestamp`   | When executed             |
+| `is_error`    | Whether command failed    |
+| `stdout`      | Command output            |
+| `stderr`      | Error output              |
+| `session_id`  | Source session            |
 
 ### Messages Table
 
-| Field | Description |
-|-------|-------------|
-| `uuid` | Unique message ID |
-| `session_id` | Source session |
-| `type` | `user` or `assistant` |
+| Field          | Description                                   |
+| -------------- | --------------------------------------------- |
+| `uuid`         | Unique message ID                             |
+| `session_id`   | Source session                                |
+| `type`         | `user` or `assistant`                         |
 | `content_type` | `text`, `thinking`, `tool_use`, `tool_result` |
-| `content` | Message content |
-| `timestamp` | When sent |
-| `cwd` | Working directory context |
+| `content`      | Message content                               |
+| `timestamp`    | When sent                                     |
+| `cwd`          | Working directory context                     |
 
 ### Candidates Table
 
-| Field | Description |
-|-------|-------------|
-| `session_id` | Source session |
-| `content_type` | Type of content |
-| `content` | Candidate content |
-| `value_score` | Quality score (0-100) |
-| `timestamp` | When extracted |
+| Field          | Description           |
+| -------------- | --------------------- |
+| `session_id`   | Source session        |
+| `content_type` | Type of content       |
+| `content`      | Candidate content     |
+| `value_score`  | Quality score (0-100) |
+| `timestamp`    | When extracted        |
 
 ## For AI Agents
 
